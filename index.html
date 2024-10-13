@@ -6,54 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Mi Página Personal</title>
     <style>
+        /* Estilos globales */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
+
+        /* Cabecera */
         header {
-            background-color: #333;
-            padding: 10px 0;
+            background-color: #0066cc;
+            padding: 20px 0;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         header h1 {
             color: white;
             margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
         }
+
+        /* Menú de navegación */
         nav {
-            background-color: #444;
+            background-color: #004a99;
             display: flex;
             justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             display: flex;
         }
+
         nav ul li {
             margin: 0 15px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
-            padding: 15px;
+            padding: 15px 20px;
             display: block;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 30px;
         }
+
         nav ul li a:hover {
-            background-color: #555;
+            background-color: #005bb5;
+            transform: scale(1.1);
         }
+
+        /* Secciones */
         section {
-            padding: 20px;
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
+        section h2 {
+            color: #0066cc;
+            font-size: 2rem;
+            border-bottom: 2px solid #004a99;
+            padding-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Pie de página */
         footer {
             text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            padding: 20px 0;
+            background-color: #004a99;
             color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
