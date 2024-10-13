@@ -7,18 +7,33 @@
     <title>Mi Página Personal</title>
     <style>
         /* Estilos globales */
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth; /* Desplazamiento suave */
+        }
+
+        body {
+            margin: 0;
             background-color: #f4f4f4;
             color: #333;
+            overflow-x: hidden;
         }
 
         /* Cabecera */
         header {
+            position: fixed;
+            top: 0;
+            width: 100%;
             background-color: #0066cc;
-            padding: 20px 0;
+            z-index: 10;
+            padding: 10px 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -26,13 +41,17 @@
         header h1 {
             color: white;
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2rem;
             letter-spacing: 1px;
         }
 
         /* Menú de navegación */
         nav {
             background-color: #004a99;
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            z-index: 10;
             display: flex;
             justify-content: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -64,27 +83,34 @@
             transform: scale(1.1);
         }
 
-        /* Secciones */
+        /* Secciones ocupando pantalla completa */
         section {
+            height: 100vh; /* Cada sección ocupa el 100% del viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             padding: 40px 20px;
-            margin: 20px auto;
-            max-width: 1000px;
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        section:nth-child(even) {
+            background-color: #e6f2ff; /* Alternar colores para cada sección */
         }
 
         section h2 {
             color: #0066cc;
-            font-size: 2rem;
-            border-bottom: 2px solid #004a99;
-            padding-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
         section p {
             font-size: 1.2rem;
             line-height: 1.6;
             color: #666;
+            text-align: center;
+            max-width: 800px;
         }
 
         /* Pie de página */
@@ -93,7 +119,6 @@
             padding: 20px 0;
             background-color: #004a99;
             color: white;
-            margin-top: 40px;
         }
 
         footer p {
@@ -151,6 +176,41 @@
     <footer>
         <p>© 2024 Mi Nombre. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        // Añadir el evento de scroll suave a cada enlace del menú
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();  // Prevenir el comportamiento por defecto del enlace
+
+                const targetId = this.getAttribute('href');  // Obtener el id de destino
+                const targetSection = document.querySelector(targetId);
+
+                // Hacer scroll suave a la sección correspondiente
+                window.scrollTo({
+                    top: targetSection.offsetTop - 60,  // Restar el tamaño del menú fijo
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Ajuste para que el menú no cubra la parte superior de la sección al navegar
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const scrollPos = window.scrollY + 70; // Posición del scroll más un pequeño offset
+
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+                    document.querySelectorAll('nav ul li a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + section.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
