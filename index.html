@@ -20,36 +20,18 @@
         }
 
         body {
-            margin: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Cabecera */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #0066cc;
-            z-index: 10;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            color: white;
-            margin: 0;
-            font-size: 2rem;
-            letter-spacing: 1px;
+            background-image: url('inicio.jpeg'); /* Reemplaza con la ruta de tu imagen */
+            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+            background-position: center;
+            background-attachment: fixed; /* El fondo se queda fijo */
+            z-index: 1; /* Colocar la sección de inicio por detrás */
         }
 
         /* Menú de navegación */
         nav {
-            background-color: #004a99;
+            background-color: #38424d;
             position: fixed;
-            top: 60px;
+            top: 0;
             width: 100%;
             z-index: 10;
             display: flex;
@@ -79,58 +61,269 @@
         }
 
         nav ul li a:hover {
-            background-color: #005bb5;
+            background-color: #030303;
             transform: scale(1.1);
         }
 
         /* Secciones ocupando pantalla completa */
         section {
-            height: 100vh; /* Cada sección ocupa el 100% del viewport */
+            min-height: 100vh; /* Cada sección ocupa al menos el 100% del viewport */
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            padding: 40px 20px;
-            background-color: white;
+            justify-content: center; /* Centrar contenido verticalmente */
+            align-items: center; /* Centrar contenido horizontalmente */
+            padding: 20px;
+            background-color: transparent; /* Fondo transparente para que el fondo fijo sea visible */
             transition: background-color 0.3s ease-in-out;
+            overflow: hidden; /* Evitar desbordamiento en las secciones */
         }
 
-        section:nth-child(even) {
-            background-color: #e6f2ff; /* Alternar colores para cada sección */
+        /* Estilo especial para la sección de inicio */
+        #inicio {
+            color: white;
+            text-align: center;
         }
 
-        section h2 {
-            color: #0066cc;
-            font-size: 3rem;
+        #inicio h2 {
+            font-size: 4rem;
             margin-bottom: 20px;
         }
 
-        section p {
+        #inicio p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* Fondo borroso en otras secciones */
+        section:not(#inicio) {
+            backdrop-filter: blur(10px); /* Desenfoca el fondo */
+            background-color: rgba(255, 255, 255, 0.507); /* Fondo semi-transparente para el contenido */
+        }
+
+        /* Estilo especial para la sección sobre mí */
+        #sobremi {
+            width: 100%;
+            padding: 40px 20px;
+        }
+
+        #sobremi h2 {
+            font-size: 3rem;
+            color: #38424d;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+
+        .sobremi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+            grid-template-rows: auto auto; /* Dos filas automáticas */
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px; /* Limita el ancho máximo de la cuadrícula */
+            justify-content: center; /* Centrar contenido horizontalmente */
+            align-items: center; /* Centrar contenido verticalmente */
+            margin: 0 20px;
+        }
+
+        /* Caja de texto para la biografía */
+        .sobremi-contenido,
+        .sobremi-contenido3 {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .sobremi-contenido {
+            grid-row: span 2; /* Ocupa ambas filas */
+            display: flex; /* Usar flexbox para centrar el contenido */
+            flex-direction: column; /* Organizar elementos en columna */
+            justify-content: center; /* Centrar verticalmente */
+            align-items: flex-start; /* Alinear el contenido a la izquierda */
+        }
+
+        .sobremi-contenido2 {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            display: flex; /* Usar flexbox para centrar el contenido */
+            flex-direction: column; /* Organizar elementos en columna */
+            justify-content: center; /* Centrar verticalmente */
+            align-items: left; /* Centrar horizontalmente */
+            height: 100%; /* Para que tome la altura completa de la cuadrícula */
+        }
+
+        .sobremi-contenido p, .sobremi-contenido2 p, .sobremi-contenido3 p {
             font-size: 1.2rem;
             line-height: 1.6;
-            color: #666;
-            text-align: center;
-            max-width: 800px;
+            color: #333;
+            text-align: justify;
         }
+
+        .sobremi-contenido strong,
+        .sobremi-contenido2 strong,
+        .sobremi-contenido3 strong {
+            color: #38424d;
+        }
+
+       
+
+        /* Estilos para la sección de formación */
+        #formacion {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            backdrop-filter: blur(5px);
+        }
+
+        #formacion h2 {
+            font-size: 3rem;
+            color: #38424d;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la cuadrícula de formación */
+        .formacion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* Tres columnas de igual tamaño */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .formacion-contenido {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Alinea el texto a la izquierda */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start; /* Mantiene el texto alineado a la izquierda */
+        }
+
+        .formacion-contenido h3 {
+            font-size: 1.8rem;
+            color: #38424d;
+            margin-bottom: 10px;
+        }
+
+        .formacion-contenido p {
+            text-align: left; /* Alineación del texto */
+            width: 100%; /* Asegura que el contenido ocupe todo el ancho disponible */
+            font-size: 1.3rem; /* Tamaño de letra aumentado */
+            margin-bottom: 15px;
+        }
+
+        .formacion-contenido ul {
+            text-align: left; /* Alineación del texto */
+            width: 100%; /* Asegura que el contenido ocupe todo el ancho disponible */
+        }
+
+        .formacion-contenido ul li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center; /* Centra el logo horizontalmente */
+            align-items: center;
+            width: 100%; /* Asegura que el logo ocupe todo el ancho */
+            margin-top: 20px; /* Separación del logo respecto al texto */
+        }
+
+        .uclm-logo {
+            max-width: 150px; /* Controla el tamaño del logo */
+            height: auto;
+        }
+
+        /* Estilos para la sección de habilidades */
+        #habilidades {
+            padding: 60px 20px;
+            background-color: #f4f7f6;
+            text-align: center;
+        }
+
+        #habilidades h2 {
+            font-size: 3rem;
+            color: #38424d;
+            margin-bottom: 40px;
+        }
+
+        .habilidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adaptable a pantallas */
+            gap: 30px;
+            justify-items: center; /* Centra las tarjetas horizontalmente */
+            align-items: center; /* Centra las tarjetas verticalmente */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .habilidad-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            width: 100%; /* Asegura que las tarjetas ocupen el ancho completo del contenedor */
+        }
+
+        .habilidad-card img {
+            max-width: 100px; /* Tamaño de los íconos */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .habilidad-card h3 {
+            font-size: 1.5rem;
+            color: #38424d;
+        }
+
+        .habilidad-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
 
         /* Pie de página */
         footer {
             text-align: center;
             padding: 20px 0;
-            background-color: #004a99;
+            background-color: #38424d;
             color: white;
         }
 
-        footer p {
-            margin: 0;
+        /* Media queries para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .sobremi-grid {
+                grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+                grid-template-rows: auto;
+                gap: 20px;
+            }
+
+            #sobremi h2 {
+                font-size: 2rem; /* Reducir el tamaño del título */
+                padding: 0 10px; /* Agregar algo de padding para evitar que el texto toque los bordes */
+            }
+            .formacion-grid {
+                grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+            }
+    
+            #formacion h2 {
+                font-size: 2.5rem; /* Ajusta el tamaño del título en pantallas más pequeñas */
+            }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Mi Página Personal</h1>
-    </header>
 
     <nav>
         <ul>
@@ -144,25 +337,126 @@
     </nav>
 
     <section id="inicio">
-        <h2>Inicio</h2>
-        <p>Bienvenido a mi página personal. Aquí podrás conocer más sobre mí y mi trabajo.</p>
+        <h2>Roberto Ortiz Cañamero</h2>
+        <p>Estudiante de Ingeniería Informática - UCLM</p>
     </section>
 
     <section id="sobremi">
         <h2>Sobre mí</h2>
-        <p>Un poco de información sobre quién soy y qué hago.</p>
+        <div class="sobremi-grid">
+            <div class="sobremi-contenido">
+                <h2>Mi Historia</h2>
+                <p>
+                    Hola, soy <strong>Roberto Ortiz Cañamero</strong>, actualmente estudiante de Ingeniería Informática.
+                    Desde pequeño, siempre me fascinó el mundo de la informática, y gracias al apoyo de mi familia, mi curiosidad y afición por este campo fueron creciendo.
+                </p>
+                <p>
+                    Gracias a ellos, descubrí que quería dedicar mi vida a este ámbito y, por eso, decidí estudiar la carrera de Ingeniería Informática.
+                </p>
+                
+            </div>
+
+            <div class="sobremi-contenido2">
+                <h2>Mi Perfil</h2>
+                <p>
+                    <strong>Localización</strong>:Ciudad Real 
+                </p>
+                <p>
+                    <strong>Idiomas</strong>:Español
+                </p>
+                <p>
+                    <strong>Email</strong>:rotizcanamero@gmail.com  
+                </p>
+            </div>
+
+            <div class="sobremi-contenido3">
+                <h2>Mis Intereses</h2>
+                <p>
+                    Soy un apasionado de la tecnología con grandes intereses en el <strong>análisis de datos</strong> y el desarrollo de <strong>IoT</strong>.
+                    Busco oportunidades en el sector tecnológico donde pueda aplicar mis conocimientos y crecer profesionalmente.
+                </p>
+            </div>
+        </div>
     </section>
 
     <section id="formacion">
         <h2>Formación</h2>
-        <p>Mis estudios académicos y certificaciones.</p>
+        <div class="formacion-grid">
+            <div class="formacion-contenido">
+                <h3>Grado en Ingeniería Informática</h3>
+                <p>Universidad de Castilla-La Mancha (UCLM) - 2021-2025</p>
+                <ul>
+                    <li>Especialidad en <strong>Tecnologías de la Información</strong></li>
+                    <li><strong>Proyectos relevantes: </strong>Desarrollo de un juego basado en <strong>pokemon</strong>, sistema de auto creación de playlist <strong>BeatMixer</strong></li>
+                </ul>
+                <div class="logo-container">
+                    <img src="LogoUCLM.jpg" alt="Logo UCLM" class="uclm-logo">
+                </div>
+            </div>
+    
+            <div class="formacion-contenido">
+                <h3>Certificación en Análisis de Datos</h3>
+                <p>Google Data Analytics - 2023</p>
+                <ul>
+                    <li>Habilidades aprendidas: Python, R, SQL, Power BI</li>
+                    <li>Proyecto: Análisis de datos de tráfico para optimización de rutas</li>
+                </ul>
+            </div>
+    
+            <div class="formacion-contenido">
+                <h3>Curso de IoT </h3>
+                <p>Santander Open Academy 2024</p>
+                <ul>
+                    <li>Introducción a Iot</li>
+                    <li>Seguridad</li>
+                    <li>Casos de usos</li>
+                </ul>
+                <div class="logo-container">
+                    <img src="Santander.png" alt="Logo santander" class="uclm-logo">
+                </div>
+            </div>
+            
+        </div>
     </section>
 
     <section id="habilidades">
         <h2>Habilidades</h2>
-        <p>Una lista de mis habilidades profesionales.</p>
+        <div class="habilidades-grid">
+            <div class="habilidad-card">
+                <img src="python-logo.png" alt="Python Logo">
+                <h3>Python</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="javascript-logo.png" alt="JavaScript Logo">
+                <h3>JavaScript</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="html-logo.png" alt="HTML Logo">
+                <h3>HTML & CSS</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="sql-logo.png" alt="SQL Logo">
+                <h3>SQL</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="iot-logo.png" alt="IoT Logo">
+                <h3>IoT</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="git-logo.png" alt="Git Logo">
+                <h3>Git & GitHub</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="ai-logo.png" alt="AI Logo">
+                <h3>Inteligencia Artificial</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="cloud-logo.png" alt="Cloud Logo">
+                <h3>Cloud Computing</h3>
+            </div>
+        </div>
     </section>
-
+    
     <section id="portafolio">
         <h2>Portafolio</h2>
         <p>Proyectos en los que he trabajado. ¡Echa un vistazo!</p>
@@ -174,43 +468,8 @@
     </section>
 
     <footer>
-        <p>© 2024 Mi Nombre. Todos los derechos reservados.</p>
+        <p>© 2024 Roberto Ortiz Cañamero. Todos los derechos reservados.</p>
     </footer>
-
-    <script>
-        // Añadir el evento de scroll suave a cada enlace del menú
-        document.querySelectorAll('nav ul li a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();  // Prevenir el comportamiento por defecto del enlace
-
-                const targetId = this.getAttribute('href');  // Obtener el id de destino
-                const targetSection = document.querySelector(targetId);
-
-                // Hacer scroll suave a la sección correspondiente
-                window.scrollTo({
-                    top: targetSection.offsetTop - 60,  // Restar el tamaño del menú fijo
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Ajuste para que el menú no cubra la parte superior de la sección al navegar
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const scrollPos = window.scrollY + 70; // Posición del scroll más un pequeño offset
-
-            sections.forEach(section => {
-                if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
-                    document.querySelectorAll('nav ul li a').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + section.id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>
