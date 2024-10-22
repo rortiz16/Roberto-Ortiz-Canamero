@@ -17,10 +17,14 @@
             height: 100%;
             font-family: 'Arial', sans-serif;
             scroll-behavior: smooth; /* Desplazamiento suave */
+        }
+
+        body {
             background-image: url('inicio.jpeg'); /* Reemplaza con la ruta de tu imagen */
             background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
             background-position: center;
             background-attachment: fixed; /* El fondo se queda fijo */
+            z-index: 1; /* Colocar la sección de inicio por detrás */
         }
 
         /* Menú de navegación */
@@ -40,28 +44,36 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: row;
         }
 
         nav ul li {
-            margin: 0 10px;
+            margin: 0 15px;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            padding: 10px 15px;
+            padding: 15px 20px;
             display: block;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: background-color 0.3s, transform 0.3s;
-            border-radius: 20px;
+            border-radius: 30px;
         }
 
         nav ul li a:hover {
             background-color: #030303;
             transform: scale(1.1);
         }
+        .move {
+            transition: transform 1s ease-out;
+            transform: translateY(200px); /* Elemento desplazado hacia abajo */
+            opacity: 0;
+        }
 
+        .move.in-view {
+            transform: translateY(0); /* Regresar a su posición original */
+            opacity: 1; /* Mostrar el elemento */
+        }
         /* Secciones ocupando pantalla completa */
         section {
             min-height: 100vh; /* Cada sección ocupa al menos el 100% del viewport */
@@ -75,12 +87,6 @@
             overflow: hidden; /* Evitar desbordamiento en las secciones */
         }
 
-        /* Fondo borroso en otras secciones */
-        section:not(#inicio) {
-            backdrop-filter: blur(10px); /* Desenfoca el fondo */
-            background-color: rgba(255, 255, 255, 0.507); /* Fondo semi-transparente para el contenido */
-        }
-
         /* Estilo especial para la sección de inicio */
         #inicio {
             color: white;
@@ -88,80 +94,165 @@
         }
 
         #inicio h2 {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 20px;
         }
 
         #inicio p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-top: 10px;
             font-weight: 300;
         }
 
+        /* Fondo borroso en otras secciones */
+        section:not(#inicio) {
+            backdrop-filter: blur(10px); /* Desenfoca el fondo */
+            background-color: rgba(255, 255, 255, 0.507); /* Fondo semi-transparente para el contenido */
+        }
+
         /* Estilo especial para la sección sobre mí */
+        #sobremi {
+            width: 100%;
+            padding: 40px 20px;
+        }
+
         #sobremi h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #38424d;
             margin-bottom: 20px;
             text-align: center;
         }
+
 
         .sobremi-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+            grid-template-rows: auto auto; /* Dos filas automáticas */
             gap: 20px;
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1200px; /* Limita el ancho máximo de la cuadrícula */
+            justify-content: center; /* Centrar contenido horizontalmente */
+            align-items: center; /* Centrar contenido verticalmente */
             margin: 0 20px;
         }
 
-        .sobremi-contenido, .sobremi-contenido2, .sobremi-contenido3 {
-            background-color: rgba(255, 255, 255, 0.9);
+        /* Caja de texto para la biografía */
+        .sobremi-contenido,
+        .sobremi-contenido3 {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 1s ease-out, opacity 1s ease-out;
-            transform: translateY(50px);
-            opacity: 0;
         }
 
-        /* Efecto al estar en vista */
-        .in-view {
-            transform: translateY(0);
-            opacity: 1;
+        .sobremi-contenido {
+            grid-row: span 2; /* Ocupa ambas filas */
+            display: flex; /* Usar flexbox para centrar el contenido */
+            flex-direction: column; /* Organizar elementos en columna */
+            justify-content: center; /* Centrar verticalmente */
+            align-items: flex-start; /* Alinear el contenido a la izquierda */
         }
 
-        /* Sección de formación */
+        .sobremi-contenido2 {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            display: flex; /* Usar flexbox para centrar el contenido */
+            flex-direction: column; /* Organizar elementos en columna */
+            justify-content: center; /* Centrar verticalmente */
+            align-items: left; /* Centrar horizontalmente */
+            height: 100%; /* Para que tome la altura completa de la cuadrícula */
+        }
+
+        .sobremi-contenido p, .sobremi-contenido2 p, .sobremi-contenido3 p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            text-align: justify;
+        }
+
+        .sobremi-contenido strong,
+        .sobremi-contenido2 strong,
+        .sobremi-contenido3 strong {
+            color: #38424d;
+        }
+
+       
+
+        /* Estilos para la sección de formación */
         #formacion {
             padding: 40px 20px;
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            backdrop-filter: blur(5px);
         }
 
         #formacion h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #38424d;
             margin-bottom: 20px;
         }
 
+        /* Estilos para la cuadrícula de formación */
         .formacion-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr; /* Tres columnas de igual tamaño */
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .formacion-contenido {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            text-align: left;
-            transition: transform 1s ease-out, opacity 1s ease-out;
-            transform: translateY(50px);
-            opacity: 0;
+            text-align: left; /* Alinea el texto a la izquierda */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start; /* Mantiene el texto alineado a la izquierda */
         }
 
-        /* Sección de habilidades */
+        .formacion-contenido h3 {
+            font-size: 1.8rem;
+            color: #38424d;
+            margin-bottom: 10px;
+        }
+
+        .formacion-contenido p {
+            text-align: left; /* Alineación del texto */
+            width: 100%; /* Asegura que el contenido ocupe todo el ancho disponible */
+            font-size: 1.3rem; /* Tamaño de letra aumentado */
+            margin-bottom: 15px;
+        }
+
+        .formacion-contenido ul {
+            text-align: left; /* Alineación del texto */
+            width: 100%; /* Asegura que el contenido ocupe todo el ancho disponible */
+        }
+
+        .formacion-contenido ul li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center; /* Centra el logo horizontalmente */
+            align-items: center;
+            width: 100%; /* Asegura que el logo ocupe todo el ancho */
+            margin-top: 20px; /* Separación del logo respecto al texto */
+        }
+
+        .uclm-logo {
+            max-width: 150px; /* Controla el tamaño del logo */
+            height: auto;
+        }
+
+        /* Estilos para la sección de habilidades */
         #habilidades {
             padding: 60px 20px;
             background-color: #f4f7f6;
@@ -169,15 +260,17 @@
         }
 
         #habilidades h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #38424d;
             margin-bottom: 40px;
         }
 
         .habilidades-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adaptable a pantallas */
             gap: 30px;
+            justify-items: center; /* Centra las tarjetas horizontalmente */
+            align-items: center; /* Centra las tarjetas verticalmente */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -187,55 +280,112 @@
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 1s ease-out, opacity 1s ease-out;
-            transform: translateY(50px);
-            opacity: 0;
-        }
-
-        /* Sección de portafolio */
-        #portafolio {
-            padding: 60px 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.8);
+            width: 100%; /* Asegura que las tarjetas ocupen el ancho completo del contenedor */
+            height: 300px; /* Altura fija para todas las tarjetas */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrar verticalmente el contenido */
+            align-items: center;
         }
 
-        #portafolio h2 {
-            font-size: 2.5rem;
+        .habilidad-card img {
+            max-width: 100px; /* Tamaño de los íconos */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .habilidad-card h3 {
+            font-size: 1.5rem;
             color: #38424d;
-            margin-bottom: 40px;
         }
 
-        .portafolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .habilidad-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .portafolio-item {
+            /*Contacto*/
+        .contacto-seccion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #f4f7f6;
+            color: #38424d;
+            min-height: 100vh;
+        }
+
+        .contacto-contenido {
             background-color: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 1s ease-out, opacity 1s ease-out;
-            transform: translateY(50px);
-            opacity: 0;
+            padding: 60px; /* Aumentado el padding para agrandar el cuadro */
+            border-radius: 20px; /* Borde más redondeado */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Sombra más fuerte para mayor impacto */
+            max-width: 600px; /* Aumentado el ancho máximo */
+            width: 100%;
+            margin-top: 30px;
         }
 
-        /* Sección de contacto */
-        #contacto {
-            padding: 60px 20px;
-            background-color: #e9f5f4;
-            text-align: center;
+        .contacto-foto {
+            width: 180px; /* Aumentado el tamaño de la foto */
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px; /* Mayor separación entre la foto y el nombre */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte para la foto */
         }
 
-        #contacto h2 {
-            font-size: 2.5rem;
+        .contacto-contenido h2 {
+            font-size: 2.2rem; /* Letra más grande */
+            margin-bottom: 30px;
             color: #38424d;
-            margin-bottom: 40px;
         }
 
+        .contacto-info {
+            margin-bottom: 30px; /* Mayor separación debajo del nombre */
+        }
+
+        .contacto-info p {
+            font-size: 1.4rem; /* Texto más grande */
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #38424d;
+        }
+
+        .contacto-info i {
+            margin-right: 15px; /* Mayor separación entre el icono y el texto */
+            font-size: 1.6rem; /* Iconos un poco más grandes */
+            color: #3a5fcd;
+        }
+
+        .contacto-boton {
+            display: inline-block;
+            padding: 18px 40px; /* Botón más grande */
+            background-color: #2f8f83; /* Color personalizado para el botón */
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem; /* Texto más grande */
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .contacto-boton:hover {
+            background-color: #276f65; /* Efecto hover con un tono más oscuro */
+            transform: scale(1.05);
+        }
+
+        /* Estilos para pantallas pequeñas */
+        @media screen and (max-width: 768px) {
+    
+        }
+
+        /* Pie de página */
         footer {
             text-align: center;
             padding: 20px 0;
@@ -243,51 +393,57 @@
             color: white;
         }
 
-        /* Media Queries para dispositivos móviles */
-        @media screen and (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
+        /* Media queries para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .sobremi-grid {
+                grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+                grid-template-rows: auto;
+                gap: 20px;
             }
 
-            nav ul li {
-                margin: 10px 0;
+            #sobremi h2 {
+                font-size: 2rem; /* Reducir el tamaño del título */
+                padding: 0 10px; /* Agregar algo de padding para evitar que el texto toque los bordes */
+            }
+            .formacion-grid {
+                grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+            }
+    
+            #formacion h2 {
+                font-size: 2.5rem; /* Ajusta el tamaño del título en pantallas más pequeñas */
             }
 
-            nav ul li a {
-                font-size: 0.9rem;
+            .habilidades-grid{
+                grid-template-columns: 1fr; 
             }
 
-            #inicio h2 {
-                font-size: 2rem;
+            .contacto-foto {
+                width: 120px;
+                height: 120px;
             }
 
-            #inicio p {
+            .contacto-contenido h2 {
+                font-size: 1.8rem;
+            }
+
+            .contacto-info p {
                 font-size: 1rem;
             }
 
-            /* Cambiar grid a columnas individuales */
-            .sobremi-grid, .formacion-grid, .habilidades-grid, .portafolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Ajustes de padding y tamaño de texto en secciones */
-            .sobremi-contenido, .sobremi-contenido2, .sobremi-contenido3, .formacion-contenido, .habilidad-card, .portafolio-item {
-                padding: 20px;
-            }
-
-            #sobremi h2, #formacion h2, #habilidades h2, #portafolio h2, #contacto h2 {
-                font-size: 2rem;
+            .contacto-boton {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <body>
 
-    <!-- Menú de navegación -->
     <nav>
         <ul>
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobremi">Sobre Mí</a></li>
+            <li><a href="#sobremi">Sobre mí</a></li>
             <li><a href="#formacion">Formación</a></li>
             <li><a href="#habilidades">Habilidades</a></li>
             <li><a href="#portafolio">Portafolio</a></li>
@@ -295,101 +451,144 @@
         </ul>
     </nav>
 
-    <!-- Sección de inicio -->
     <section id="inicio">
-        <h2>¡Bienvenido a Mi Página!</h2>
-        <p>Descubre más sobre mí y mi trabajo.</p>
+        <h2>Roberto Ortiz Cañamero</h2>
+        <p>Estudiante de Ingeniería Informática - UCLM</p>
     </section>
 
-    <!-- Sección sobre mí -->
     <section id="sobremi">
-        <h2>Sobre Mí</h2>
+        <h2>Sobre mí</h2>
         <div class="sobremi-grid">
             <div class="sobremi-contenido">
-                <h3>Introducción</h3>
-                <p>Desde muy joven, me apasiona la tecnología...</p>
+                <h2>Mi Historia</h2>
+                <p>
+                    Hola, soy <strong>Roberto Ortiz Cañamero</strong>, actualmente estudiante de Ingeniería Informática.
+                    Desde pequeño, siempre me fascinó el mundo de la informática, y gracias al apoyo de mi familia, mi curiosidad y afición por este campo fueron creciendo.
+                </p>
+                <p>
+                    Gracias a ellos, descubrí que quería dedicar mi vida a este ámbito y, por eso, decidí estudiar la carrera de Ingeniería Informática.
+                </p>
+                
             </div>
+
             <div class="sobremi-contenido2">
-                <h3>Mis Intereses</h3>
-                <p>Me encanta la programación...</p>
+                <h2>Mi Perfil</h2>
+                <p>
+                    <strong>Localización</strong>:Ciudad Real 
+                </p>
+                <p>
+                    <strong>Idiomas</strong>:Español
+                </p>
+                <p>
+                    <strong>Email</strong>:rotizcanamero@gmail.com  
+                </p>
             </div>
+
             <div class="sobremi-contenido3">
-                <h3>Metas</h3>
-                <p>Quiero llegar a ser un líder en tecnología...</p>
+                <h2>Mis Intereses</h2>
+                <p>
+                    Soy un apasionado de la tecnología con grandes intereses en el <strong>análisis de datos</strong> y el desarrollo de <strong>IoT</strong>.
+                    Busco oportunidades en el sector tecnológico donde pueda aplicar mis conocimientos y crecer profesionalmente.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Sección de formación -->
     <section id="formacion">
         <h2>Formación</h2>
         <div class="formacion-grid">
             <div class="formacion-contenido">
                 <h3>Grado en Ingeniería Informática</h3>
-                <p>Universidad de Castilla-La Mancha</p>
+                <p>Universidad de Castilla-La Mancha (UCLM) - 2021-2025</p>
+                <ul>
+                    <li>Especialidad en <strong>Tecnologías de la Información</strong></li>
+                    <li><strong>Proyectos relevantes: </strong>Desarrollo de un juego basado en <strong>pokemon</strong>, sistema de auto creación de playlist <strong>BeatMixer</strong></li>
+                </ul>
+                <div class="logo-container">
+                    <img src="LogoUCLM.jpg" alt="Logo UCLM" class="uclm-logo">
+                </div>
             </div>
+    
             <div class="formacion-contenido">
-                <h3>Curso de Análisis de Datos</h3>
-                <p>DataCamp</p>
+                <h3>Certificación en Análisis de Datos</h3>
+                <p>Google Data Analytics - 2023</p>
+                <ul>
+                    <li>Habilidades aprendidas: Python, R, SQL, Power BI</li>
+                    <li>Proyecto: Análisis de datos de tráfico para optimización de rutas</li>
+                </ul>
             </div>
+    
             <div class="formacion-contenido">
-                <h3>Certificación en Python</h3>
-                <p>Coursera</p>
+                <h3>Curso de IoT </h3>
+                <p>Santander Open Academy 2024</p>
+                <ul>
+                    <li>Introducción a Iot</li>
+                    <li>Seguridad</li>
+                    <li>Casos de usos</li>
+                </ul>
+                <div class="logo-container">
+                    <img src="Santander.png" alt="Logo santander" class="uclm-logo">
+                </div>
             </div>
+            
         </div>
     </section>
 
-    <!-- Sección de habilidades -->
     <section id="habilidades">
         <h2>Habilidades</h2>
         <div class="habilidades-grid">
             <div class="habilidad-card">
-                <h3>Programación en Python</h3>
-                <p>Experiencia en análisis y automatización de procesos.</p>
+                <img src="python-logo.png" alt="Python Logo">
+                <h3>Python</h3>
             </div>
             <div class="habilidad-card">
-                <h3>Data Analytics</h3>
-                <p>Experto en análisis de datos utilizando diversas herramientas.</p>
+                <img src="html-logo.webp" alt="HTML Logo">
+                <h3>HTML & CSS</h3>
             </div>
             <div class="habilidad-card">
-                <h3>Desarrollo Web</h3>
-                <p>HTML, CSS, JavaScript y frameworks como React.</p>
+                <img src="1640051340564.png" alt="SQL Logo">
+                <h3>SQL</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="Git-Logo.png" alt="Git Logo">
+                <h3>Git & GitHub</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="ChatGPT_logo.svg.png" alt="AI Logo">
+                <h3>Inteligencia Artificial</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="java-logo.png" alt="Java Logo">
+                <h3>Java</h3>
+            </div>
+            <div class="habilidad-card">
+                <img src="cs-logo.png" alt="cs Logo">
+                <h3>C#</h3>
             </div>
         </div>
     </section>
-
-    <!-- Sección de portafolio -->
+    
     <section id="portafolio">
         <h2>Portafolio</h2>
-        <div class="portafolio-grid">
-            <div class="portafolio-item">
-                <h3>Proyecto 1</h3>
-                <p>Descripción de mi proyecto</p>
+        <p>Proyectos en los que he trabajado. ¡Echa un vistazo!</p>
+    </section>
+
+    <section id="contacto" class="contacto-seccion">
+        <div class="contacto-contenido">
+            <img src="inicio.jpeg" alt="Foto de Roberto" class="contacto-foto">
+            <h2>Roberto Ortiz Cañamero</h2>
+            <div class="contacto-info">
+                <p><i class="fas fa-phone"></i> +34 649 40 65 74</p>
+                <p><i class="fas fa-laptop"></i> rortizcanamero@gmail.com</p>
             </div>
-            <div class="portafolio-item">
-                <h3>Proyecto 2</h3>
-                <p>Descripción de mi proyecto</p>
-            </div>
-            <div class="portafolio-item">
-                <h3>Proyecto 3</h3>
-                <p>Descripción de mi proyecto</p>
-            </div>
+            <a href="mailto:rortizcanamero@gmail.com.com" class="contacto-boton">Contactar</a>
         </div>
     </section>
-
-    <!-- Sección de contacto -->
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <p>Correo: roberto@correo.com</p>
-        <p>Teléfono: +34 123 456 789</p>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Roberto Ortiz Cañamero</p>
+        <p>© 2024 Roberto Ortiz Cañamero. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script para animaciones -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const observer = new IntersectionObserver((entries) => {
@@ -401,9 +600,9 @@
                     }
                 });
             });
-
-            // Seleccionamos todos los elementos que queremos que tengan el efecto de movimiento
-            const elementsToAnimate = document.querySelectorAll('section, .habilidad-card, .formacion-contenido, .sobremi-contenido, .sobremi-contenido2, .sobremi-contenido3, .portafolio-item');
+    
+            // Seleccionamos todas las secciones que queremos que tengan el efecto de movimiento
+            const elementsToAnimate = document.querySelectorAll(' #inicio h2,#inicio h3,.habilidad-card, .formacion-contenido, .sobremi-contenido, .sobremi-contenido2, .sobremi-contenido3, .contacto-contenido');
             
             elementsToAnimate.forEach(element => {
                 element.classList.add('move');
@@ -411,6 +610,7 @@
             });
         });
     </script>
+    
 
 </body>
 </html>
