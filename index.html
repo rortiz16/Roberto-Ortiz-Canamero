@@ -265,7 +265,14 @@
             margin-bottom: 40px;
         }
 
-        .habilidades-grid {
+        #habilidades h4 {
+            margin-top: 40px;
+            font-size: 3rem;
+            color: #38424d;
+            margin-bottom: 40px;
+        }
+
+        .grid-card{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adaptable a pantallas */
             gap: 30px;
@@ -275,7 +282,7 @@
             margin: 0 auto;
         }
 
-        .habilidad-card {
+        .card {
             background-color: white;
             border-radius: 20px;
             padding: 30px;
@@ -290,18 +297,18 @@
             align-items: center;
         }
 
-        .habilidad-card img {
+        .card img {
             max-width: 100px; /* Tamaño de los íconos */
             height: auto;
             margin-bottom: 20px;
         }
 
-        .habilidad-card h3 {
+        .card h3 {
             font-size: 1.5rem;
             color: #38424d;
         }
 
-        .habilidad-card:hover {
+        .card:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
@@ -379,6 +386,60 @@
             background-color: #276f65; /* Efecto hover con un tono más oscuro */
             transform: scale(1.05);
         }
+        /*MODAL*/
+        .modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            max-width: 80%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal img {
+            max-width: 100%;
+            max-height: 70vh;
+            margin-bottom: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: black;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
 
         /* Estilos para pantallas pequeñas */
         @media screen and (max-width: 768px) {
@@ -534,44 +595,118 @@
         </div>
     </section>
 
-    <section id="habilidades">
-        <h2>Habilidades</h2>
-        <div class="habilidades-grid">
-            <div class="habilidad-card">
+
+    </section>
+        <section id="habilidades">
+        <h2>Habilidades Técnicas</h2>
+        <div class="grid-card">
+            <div class="card">
                 <img src="python-logo.png" alt="Python Logo">
                 <h3>Python</h3>
             </div>
-            <div class="habilidad-card">
+            <div class="card">
                 <img src="html-logo.webp" alt="HTML Logo">
                 <h3>HTML & CSS</h3>
             </div>
-            <div class="habilidad-card">
+            <div class="card">
                 <img src="1640051340564.png" alt="SQL Logo">
                 <h3>SQL</h3>
             </div>
-            <div class="habilidad-card">
+            <div class="card">
                 <img src="Git-Logo.png" alt="Git Logo">
                 <h3>Git & GitHub</h3>
             </div>
-            <div class="habilidad-card">
+            <div class="card">
                 <img src="ChatGPT_logo.svg.png" alt="AI Logo">
                 <h3>Inteligencia Artificial</h3>
             </div>
-            <div class="habilidad-card">
+            <div class="card">
                 <img src="java-logo.png" alt="Java Logo">
                 <h3>Java</h3>
             </div>
-            <div class="habilidad-card">
+            <div class="card">
                 <img src="cs-logo.png" alt="cs Logo">
                 <h3>C#</h3>
+            </div>
+            <div class="card">
+                <img src="visual-logo.png" alt="cs Logo">
+                <h3>Visual Studio Code</h3>
+            </div>
+            <div class="card">
+                <img src="Visual_Studio_logo.png" alt="cs Logo">
+                <h3>Visual Studio</h3>
+            </div>
+            <div class="card">
+                <img src="eclipse-logo.svg" alt="cs Logo">
+                <h3>Eclipse</h3>
+            </div>
+        </div>
+        <h4>Habilidades No Técnicas</h4>
+        <div class="grid-card">
+            <div class="card">
+                <img src="t_equipo-logo.png" alt="Python Logo">
+                <h3>Trabajo en equipo</h3>
+            </div>
+            <div class="card">
+                <img src="proactividad_sinMano.png" alt="HTML Logo">
+                <h3>Proactividad</h3>
+            </div>
+            <div class="card">
+                <img src="eficiencia.png" alt="SQL Logo">
+                <h3>Eficiencia</h3>
+            </div>
+            <div class="card">
+                <img src="liderazgo-logo.png" alt="Git Logo">
+                <h3>Liderazgo</h3>
+            </div>
+            <div class="card">
+                <img src="analisis-logo.png" alt="AI Logo">
+                <h3>Capacidad analítica</h3>
             </div>
         </div>
     </section>
     
     <section id="portafolio">
-        <h2>Portafolio</h2>
-        <p>Proyectos en los que he trabajado. ¡Echa un vistazo!</p>
+        <h2>Porfolio</h2>
+        <div class="grid-card">
+            <!-- Card de BeatMixer -->
+            <div class="card" data-images='[
+                {"src": "capturas beat mixer/cap1BM.png",{"src": "capturas beat mixer/bmp.png", "comment": "Vista de la lista creada con plan Premium. Incluye reproductor y método de exportación a Spotify."}, "comment": "Vista para redirigir a inicio de sesión de Spotify."},
+                {"src": "capturas beat mixer/Cap2BM.png", "comment": "Pagina de Sotify, autorizar permisos."},
+                {"src": "capturas beat mixer/AP3bm.png", "comment": "Vista Inicio de Sesión."},
+                {"src": "capturas beat mixer/cap8bm.png", "comment": "Registro con Plan Gratuito."},
+                {"src": "capturas beat mixer/cap9bm.png", "comment": "Registro con Plan Premium."},
+                {"src": "capturas beat mixer/cap4bm.png", "comment": "Vista creación de listas. (Función gratuita)."},
+                {"src": "capturas beat mixer/cap6bm.png", "comment": "Vista de lista creada con Plan Gratis."},
+                {"src": "capturas beat mixer/cap7bm.png", "comment": "PDF con la lista creada. (Función gratuita)."},
+                {"src": "capturas beat mixer/cap10bm.png", "comment": "Vista de playlist creadas."},
+                {"src": "capturas beat mixer/bmp.png", "comment": "Vista de la lista creada con plan Premium. Incluye reproductor y método de exportación a Spotify."},
+                {"src": "capturas beat mixer/capbmcreada.png", "comment": "Notificación de playlist bien creada en nuestra cuenta de Spotify (Función Premium)"},
+                {"src": "capturas beat mixer/capbnspo.png", "comment": "Playlist creada correctamente en una cuenta vinculada a BeatMixer."}
+                
+            ]'>
+                <img src="capturas beat mixer/logo.png" alt="BeatMixer">
+                <h3>BeatMixer</h3>
+            </div>
+            
+         
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close">&times;</span>
+                <img id="modal-image" src="" alt="Imagen ampliada">
+                <p id="modal-comment"></p> <!-- Comentario de la imagen -->
+                <button id="prev-button">&larr; Anterior</button>
+                <button id="next-button">Siguiente &rarr;</button>
+            </div>
+        </div>
+        
+
     </section>
+    
+    
+    
 
     <section id="contacto" class="contacto-seccion">
         <div class="contacto-contenido">
@@ -581,7 +716,7 @@
                 <p><i class="fas fa-phone"></i> +34 649 40 65 74</p>
                 <p><i class="fas fa-laptop"></i> rortizcanamero@gmail.com</p>
             </div>
-            <a href="mailto:rortizcanamero@gmail.com.com" class="contacto-boton">Contactar</a>
+            <a href="mailto:rortizcanamero@gmail.com" class="contacto-boton">Contactar</a>
         </div>
     </section>
     <footer>
@@ -589,28 +724,100 @@
     </footer>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    } else {
-                        entry.target.classList.remove('in-view');
-                    }
-                });
-            });
-    
-            // Seleccionamos todas las secciones que queremos que tengan el efecto de movimiento
-            const elementsToAnimate = document.querySelectorAll(' #inicio h2,#inicio h3,.habilidad-card, .formacion-contenido, .sobremi-contenido, .sobremi-contenido2, .sobremi-contenido3, .contacto-contenido');
-            
-            elementsToAnimate.forEach(element => {
-                element.classList.add('move');
-                observer.observe(element);
-            });
-        });
-    </script>
+
+
+
     
 
 </body>
 </html>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        });
+
+        // Seleccionamos todas las secciones que queremos que tengan el efecto de movimiento
+        const elementsToAnimate = document.querySelectorAll(' #inicio h2,#inicio h3,.card, .formacion-contenido, .sobremi-contenido, .sobremi-contenido2, .sobremi-contenido3, .contacto-contenido');
+        
+        elementsToAnimate.forEach(element => {
+            element.classList.add('move');
+            observer.observe(element);
+        });
+    });
+
+
+   
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('#portafolio .card');
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalComment = document.getElementById('modal-comment');
+        const closeModal = document.getElementById('close-modal');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+
+        let currentIndex = 0;
+        let images = []; // Guardará las imágenes y comentarios de la tarjeta seleccionada
+
+        // Función para abrir el modal y mostrar la primera imagen
+        function openModal(card) {
+            // Cargar las imágenes y comentarios de la tarjeta
+            const cardImages = JSON.parse(card.dataset.images);
+            images = cardImages; // Guardar las imágenes y comentarios en el array
+            currentIndex = 0; // Empezamos con la primera imagen
+
+            // Mostrar la primera imagen y su comentario
+            modalImage.src = images[currentIndex].src;
+            modalComment.textContent = images[currentIndex].comment;
+
+            // Mostrar el modal
+            modal.style.display = 'flex';
+        }
+
+        // Función para cerrar el modal
+        function closeModalHandler() {
+            modal.style.display = 'none';
+        }
+
+        // Función para mostrar la siguiente imagen
+        function showNext() {
+            currentIndex = (currentIndex + 1) % images.length; // Avanzamos al siguiente
+            modalImage.src = images[currentIndex].src;
+            modalComment.textContent = images[currentIndex].comment;
+        }
+
+        // Función para mostrar la imagen anterior
+        function showPrevious() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocedemos al anterior
+            modalImage.src = images[currentIndex].src;
+            modalComment.textContent = images[currentIndex].comment;
+        }
+
+        // Agregar el evento de clic a cada tarjeta
+        cards.forEach(card => {
+            card.addEventListener('click', () => openModal(card));
+        });
+
+        // Eventos para los botones de cerrar, siguiente y anterior
+        closeModal.addEventListener('click', closeModalHandler);
+        nextButton.addEventListener('click', showNext);
+        prevButton.addEventListener('click', showPrevious);
+
+        // Cerrar el modal si se hace clic fuera del contenido
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModalHandler();
+        });
+    });
+
+</script>
+
