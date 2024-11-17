@@ -176,6 +176,7 @@
             line-height: 1.6;
             color: #333;
             text-align: justify;
+            text-align: justify;
         }
 
         .sobremi-contenido strong,
@@ -471,7 +472,14 @@
                 z-index: -1; /* Manda el fondo detrás del contenido */  
             }
 
+            nav {
+                padding: 5px 15px; /* Reducir padding en móviles */
+            }
 
+            nav a {
+                font-size: 14px; /* Hacer los enlaces más pequeños */
+                padding: 6px 10px; /* Ajustar el tamaño de los enlaces */
+            }
             .sobremi-grid {
                 grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
                 grid-template-rows: auto;
@@ -493,6 +501,11 @@
             .habilidades-grid{
                 grid-template-columns: 1fr; 
             }
+            .grid-card {
+                grid-template-columns: repeat(2, 1fr); /* Forzar dos columnas para evitar columnas incompletas */
+            }
+
+        
 
             .contacto-foto {
                 width: 120px;
