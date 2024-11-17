@@ -11,6 +11,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
+
         }
 
 
@@ -34,42 +36,66 @@
         }
 
         /* Menú de navegación */
-        nav {
-            background-color: #38424d;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+/* Menú de navegación */
+nav {
+    background-color: #38424d;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between; /* Separar logo y menú */
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
+/* Lista de elementos de navegación */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px; /* Espacio entre enlaces */
+}
 
-        nav ul li {
-            margin: 0 15px;
-        }
+/* Elementos de la lista */
+nav ul li {
+    margin: 0;
+}
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            display: block;
-            font-size: 1.1rem;
-            transition: background-color 0.3s, transform 0.3s;
-            border-radius: 30px;
-        }
+/* Enlaces de navegación */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 30px;
+}
 
-        nav ul li a:hover {
-            background-color: #030303;
-            transform: scale(1.1);
-        }
+nav ul li a:hover {
+    background-color: #030303;
+    transform: scale(1.1);
+}
+
+/* Menú hamburguesa */
+nav .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+nav .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+
+        /*Movimiento*/
         .move {
             transition: transform 1s ease-out;
             transform: translateY(200px); /* Elemento desplazado hacia abajo */
@@ -91,6 +117,8 @@
             background-color: transparent; /* Fondo transparente para que el fondo fijo sea visible */
             transition: background-color 0.3s ease-in-out;
             overflow: hidden; /* Evitar desbordamiento en las secciones */
+            overflow-x: auto; 
+
         }
 
         /* Estilo especial para la sección de inicio */
@@ -140,6 +168,7 @@
             justify-content: center; /* Centrar contenido horizontalmente */
             align-items: center; /* Centrar contenido verticalmente */
             margin: 0 20px;
+
         }
 
         /* Caja de texto para la biografía */
@@ -472,14 +501,29 @@
                 z-index: -1; /* Manda el fondo detrás del contenido */  
             }
 
-            nav {
-                padding: 5px 15px; /* Reducir padding en móviles */
-            }
+            nav ul {
+        display: none; /* Ocultar el menú por defecto */
+        flex-direction: column; /* Disposición vertical en pantallas pequeñas */
+        width: 100%;
+        background-color: #38424d; /* Fondo del menú */
+        position: absolute;
+        top: 60px; /* Espaciado hacia abajo */
+        left: 0;
+        padding: 10px 0;
+    }
 
-            nav a {
-                font-size: 14px; /* Hacer los enlaces más pequeños */
-                padding: 6px 10px; /* Ajustar el tamaño de los enlaces */
-            }
+    nav ul li a {
+        font-size: 1.2rem; /* Aumentar tamaño de fuente */
+        padding: 15px;
+    }
+
+    nav ul.show {
+        display: flex; /* Mostrar el menú cuando se haga clic en el hamburguesa */
+    }
+
+    nav .hamburger {
+        display: flex; /* Mostrar el icono hamburguesa */
+    }
             .sobremi-grid {
                 grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
                 grid-template-rows: auto;
@@ -525,6 +569,10 @@
             }
         }
     </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Navegación Responsiva</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -532,7 +580,17 @@
     <div class="background"></div>
 
     <nav>
-        <ul>
+        
+        
+        <!-- Menú Hamburguesa para móviles -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Enlaces de navegación -->
+        <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#sobremi">Sobre mí</a></li>
             <li><a href="#formacion">Formación</a></li>
@@ -819,7 +877,7 @@
     });
 
 
-   
+
     
     document.addEventListener('DOMContentLoaded', () => {
         const cards = document.querySelectorAll('#portafolio .card');
@@ -881,7 +939,13 @@
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModalHandler();
         });
+
+
+        
     });
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+    }
 
 </script>
 
