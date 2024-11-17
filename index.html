@@ -924,15 +924,19 @@ button:hover {
         modalComment.textContent = images[currentIndex].comment;
     }
 
-    // Agregar el evento de clic a cada tarjeta
+    // Agregar el evento de clic y touchstart a cada tarjeta
     cards.forEach(card => {
         card.addEventListener('click', () => openModal(card));
+        card.addEventListener('touchstart', () => openModal(card));  // Para dispositivos táctiles
     });
 
     // Eventos para los botones de cerrar, siguiente y anterior
     closeModal.addEventListener('click', closeModalHandler);
+    closeModal.addEventListener('touchstart', closeModalHandler);  // Para dispositivos táctiles
     nextButton.addEventListener('click', showNext);
+    nextButton.addEventListener('touchstart', showNext);  // Para dispositivos táctiles
     prevButton.addEventListener('click', showPrevious);
+    prevButton.addEventListener('touchstart', showPrevious);  // Para dispositivos táctiles
 
     // Cerrar el modal si se hace clic fuera del contenido del modal
     modal.addEventListener('click', function (e) {
@@ -940,7 +944,15 @@ button:hover {
             closeModalHandler();
         }
     });
+
+    // Para que el modal también se cierre al tocar fuera de la caja de contenido en dispositivos táctiles
+    modal.addEventListener('touchstart', function (e) {
+        if (e.target === modal) {
+            closeModalHandler();
+        }
+    });
 });
+
 
     function toggleMenu() {
         document.querySelector('.nav-links').classList.toggle('show');
