@@ -13,18 +13,24 @@
             box-sizing: border-box;
         }
 
+
         html, body {
             height: 100%;
             font-family: 'Arial', sans-serif;
             scroll-behavior: smooth; /* Desplazamiento suave */
         }
 
-        body {
-            background-image: url('inicio.jpeg'); /* Reemplaza con la ruta de tu imagen */
-            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-            background-position: center;
-            background-attachment: fixed; /* El fondo se queda fijo */
-            z-index: 1; /* Colocar la sección de inicio por detrás */
+        .background {
+            position: fixed; /* Fija el fondo en pantalla */
+            top: 0;
+            left: 0;
+            width: 100%; /* 100% del ancho */
+            height: 100%; /* 100% de la altura */
+            background-image: url('inicio.jpeg'); /* Tu imagen */
+            background-size: cover; /* Escala la imagen para cubrir el área */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Sin repetición */
+            z-index: -1; /* Manda el fondo detrás del contenido */
         }
 
         /* Menú de navegación */
@@ -452,25 +458,17 @@
 
         /* Media queries para pantallas pequeñas */
         @media (max-width: 768px) {
-            body {
-                background-size: contain; /* Asegura que la imagen siempre sea visible */
-                background-position: top; /* Mueve la imagen para que sea visible la parte superior */
-            }
-
-            #inicio {
-                padding: 20px; /* Reduce el padding en móviles */
-            }
-
-            section {
-                padding: 10px; /* Reduce el espacio interno */
-            }
-
-            #inicio h2 {
-                font-size: 2rem; /* Ajusta el tamaño del texto */
-            }
-
-            #inicio p {
-                font-size: 1rem; /* Texto más pequeño */
+            .background{
+                position: fixed; /* Fija el fondo en pantalla */
+                top: 0;
+                left: 0;
+                width: 100%; /* 100% del ancho */
+                height: 100%; /* 100% de la altura */
+                background-image: url('inicio.jpeg'); /* Tu imagen */
+                background-size: cover; /* Escala la imagen para cubrir el área */
+                background-position: 70% center; /* Centra la imagen */
+                background-repeat: no-repeat; /* Sin repetición */
+                z-index: -1; /* Manda el fondo detrás del contenido */  
             }
 
 
@@ -518,6 +516,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <body>
+    <div class="background"></div>
 
     <nav>
         <ul>
