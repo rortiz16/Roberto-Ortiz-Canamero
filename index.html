@@ -441,10 +441,6 @@
 
 
 
-        /* Estilos para pantallas pequeñas */
-        @media screen and (max-width: 768px) {
-    
-        }
 
         /* Pie de página */
         footer {
@@ -456,6 +452,14 @@
 
         /* Media queries para pantallas pequeñas */
         @media (max-width: 768px) {
+            body {
+                background-size: contain; /* Asegura que la imagen siempre sea visible */
+                background-position: top; /* Mueve la imagen para que sea visible la parte superior */
+            }
+
+            #inicio {
+                padding: 20px; /* Reduce el padding en móviles */
+            }
             .sobremi-grid {
                 grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
                 grid-template-rows: auto;
