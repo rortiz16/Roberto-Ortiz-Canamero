@@ -422,59 +422,58 @@ nav .hamburger div {
             background-color: #276f65; /* Efecto hover con un tono más oscuro */
             transform: scale(1.05);
         }
-        /*MODAL*/
-        .modal {
-            display: none; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+/*MODAL*/
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
-        .modal-content {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            max-width: 80%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+.modal-content {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    max-width: 80%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
 
-        .modal img {
-            max-width: 100%;
-            max-height: 70vh;
-            margin-bottom: 10px;
-        }
+.modal img {
+    max-width: 100%;
+    max-height: 70vh;
+    margin-bottom: 10px;
+}
 
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            cursor: pointer;
-            color: black;
-        }
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+}
 
-        button {
-            margin: 5px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        button:hover {
-            background-color: #0056b3;
-        }
-
+button:hover {
+    background-color: #0056b3;
+}
 
 
 
@@ -880,67 +879,69 @@ nav .hamburger div {
 
     
     document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('#portafolio .card');
-        const modal = document.getElementById('modal');
-        const modalImage = document.getElementById('modal-image');
-        const modalComment = document.getElementById('modal-comment');
-        const closeModal = document.getElementById('close-modal');
-        const prevButton = document.getElementById('prev-button');
-        const nextButton = document.getElementById('next-button');
+    const cards = document.querySelectorAll('#portafolio .card');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalComment = document.getElementById('modal-comment');
+    const closeModal = document.getElementById('close-modal');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
 
-        let currentIndex = 0;
-        let images = []; // Guardará las imágenes y comentarios de la tarjeta seleccionada
+    let currentIndex = 0;
+    let images = []; // Guardará las imágenes y comentarios de la tarjeta seleccionada
 
-        // Función para abrir el modal y mostrar la primera imagen
-        function openModal(card) {
-            // Cargar las imágenes y comentarios de la tarjeta
-            const cardImages = JSON.parse(card.dataset.images);
-            images = cardImages; // Guardar las imágenes y comentarios en el array
-            currentIndex = 0; // Empezamos con la primera imagen
+    // Función para abrir el modal y mostrar la primera imagen
+    function openModal(card) {
+        // Cargar las imágenes y comentarios de la tarjeta
+        const cardImages = JSON.parse(card.dataset.images);
+        images = cardImages; // Guardar las imágenes y comentarios en el array
+        currentIndex = 0; // Empezamos con la primera imagen
 
-            // Mostrar la primera imagen y su comentario
-            modalImage.src = images[currentIndex].src;
-            modalComment.textContent = images[currentIndex].comment;
+        // Mostrar la primera imagen y su comentario
+        modalImage.src = images[currentIndex].src;
+        modalComment.textContent = images[currentIndex].comment;
 
-            // Mostrar el modal
-            modal.style.display = 'flex';
-        }
+        // Mostrar el modal
+        modal.style.display = 'flex';
+    }
 
-        // Función para cerrar el modal
-        function closeModalHandler() {
-            modal.style.display = 'none';
-        }
+    // Función para cerrar el modal
+    function closeModalHandler() {
+        modal.style.display = 'none';
+    }
 
-        // Función para mostrar la siguiente imagen
-        function showNext() {
-            currentIndex = (currentIndex + 1) % images.length; // Avanzamos al siguiente
-            modalImage.src = images[currentIndex].src;
-            modalComment.textContent = images[currentIndex].comment;
-        }
+    // Función para mostrar la siguiente imagen
+    function showNext() {
+        currentIndex = (currentIndex + 1) % images.length; // Avanzamos al siguiente
+        modalImage.src = images[currentIndex].src;
+        modalComment.textContent = images[currentIndex].comment;
+    }
 
-        // Función para mostrar la imagen anterior
-        function showPrevious() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocedemos al anterior
-            modalImage.src = images[currentIndex].src;
-            modalComment.textContent = images[currentIndex].comment;
-        }
+    // Función para mostrar la imagen anterior
+    function showPrevious() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocedemos al anterior
+        modalImage.src = images[currentIndex].src;
+        modalComment.textContent = images[currentIndex].comment;
+    }
 
-        // Agregar el evento de clic a cada tarjeta
-        cards.forEach(card => {
-            card.addEventListener('click', () => openModal(card));
-        });
-
-        // Eventos para los botones de cerrar, siguiente y anterior
-        closeModal.addEventListener('click', closeModalHandler);
-        nextButton.addEventListener('click', showNext);
-        prevButton.addEventListener('click', showPrevious);
-
-        // Cerrar el modal si se hace clic fuera del contenido
-      
-
-
-        
+    // Agregar el evento de clic a cada tarjeta
+    cards.forEach(card => {
+        card.addEventListener('click', () => openModal(card));
     });
+
+    // Eventos para los botones de cerrar, siguiente y anterior
+    closeModal.addEventListener('click', closeModalHandler);
+    nextButton.addEventListener('click', showNext);
+    prevButton.addEventListener('click', showPrevious);
+
+    // Cerrar el modal si se hace clic fuera del contenido del modal
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            closeModalHandler();
+        }
+    });
+});
+
     function toggleMenu() {
         document.querySelector('.nav-links').classList.toggle('show');
     }
