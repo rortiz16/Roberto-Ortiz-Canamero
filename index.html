@@ -893,69 +893,78 @@ nav .hamburger div {
 
     
     document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('#portafolio .card');
-        const modal = document.getElementById('modal');
-        const modalImage = document.getElementById('modal-image');
-        const modalComment = document.getElementById('modal-comment');
-        const closeModal = document.getElementById('close-modal');
-        const prevButton = document.getElementById('prev-button');
-        const nextButton = document.getElementById('next-button');
+    const cards = document.querySelectorAll('#portafolio .card');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalComment = document.getElementById('modal-comment');
+    const closeModal = document.getElementById('close-modal');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
 
-        let currentIndex = 0;
-        let images = []; // Guardará las imágenes y comentarios de la tarjeta seleccionada
+    let currentIndex = 0;
+    let images = []; // Guardará las imágenes y comentarios de la tarjeta seleccionada
 
-        // Función para abrir el modal y mostrar la primera imagen
-        function openModal(card) {
-            // Cargar las imágenes y comentarios de la tarjeta
-            const cardImages = JSON.parse(card.dataset.images);
-            images = cardImages; // Guardar las imágenes y comentarios en el array
-            currentIndex = 0; // Empezamos con la primera imagen
+    // Función para abrir el modal y mostrar la primera imagen
+    function openModal(card) {
+        // Cargar las imágenes y comentarios de la tarjeta
+        const cardImages = JSON.parse(card.dataset.images);
+        images = cardImages; // Guardar las imágenes y comentarios en el array
+        currentIndex = 0; // Empezamos con la primera imagen
 
-            // Mostrar la primera imagen y su comentario
-            modalImage.src = images[currentIndex].src;
-            modalComment.textContent = images[currentIndex].comment;
+        // Mostrar la primera imagen y su comentario
+        modalImage.src = images[currentIndex].src;
+        modalComment.textContent = images[currentIndex].comment;
 
-            // Mostrar el modal
-            modal.style.display = 'flex';
-        }
+        // Mostrar el modal
+        modal.style.display = 'flex';
+    }
 
-        // Función para cerrar el modal
-        function closeModalHandler() {
-            modal.style.display = 'none';
-        }
+    // Función para cerrar el modal
+    function closeModalHandler() {
+        modal.style.display = 'none';
+    }
 
-        // Función para mostrar la siguiente imagen
-        function showNext() {
-            currentIndex = (currentIndex + 1) % images.length; // Avanzamos al siguiente
-            modalImage.src = images[currentIndex].src;
-            modalComment.textContent = images[currentIndex].comment;
-        }
+    // Función para mostrar la siguiente imagen
+    function showNext() {
+        currentIndex = (currentIndex + 1) % images.length; // Avanzamos al siguiente
+        modalImage.src = images[currentIndex].src;
+        modalComment.textContent = images[currentIndex].comment;
+    }
 
-        // Función para mostrar la imagen anterior
-        function showPrevious() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocedemos al anterior
-            modalImage.src = images[currentIndex].src;
-            modalComment.textContent = images[currentIndex].comment;
-        }
+    // Función para mostrar la imagen anterior
+    function showPrevious() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocedemos al anterior
+        modalImage.src = images[currentIndex].src;
+        modalComment.textContent = images[currentIndex].comment;
+    }
 
-        // Agregar el evento de clic a cada tarjeta
-        cards.forEach(card => {
-            card.addEventListener('click', () => openModal(card));
-        });
-
-        // Eventos para los botones de cerrar, siguiente y anterior
-        closeModal.addEventListener('click', closeModalHandler);
-        nextButton.addEventListener('click', showNext);
-        prevButton.addEventListener('click', showPrevious);
-
-        // Cerrar el modal si se hace clic fuera del contenido
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModalHandler();
-        });
-
-
-        
+    // Agregar el evento de clic a cada tarjeta
+    cards.forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+        card.addEventListener('touchend', () => openModal(card)); // Añadir el evento para dispositivos táctiles
     });
+
+    // Eventos para los botones de cerrar, siguiente y anterior
+    closeModal.addEventListener('click', closeModalHandler);
+    closeModal.addEventListener('touchend', closeModalHandler); // Soporte para dispositivos táctiles
+
+    nextButton.addEventListener('click', showNext);
+    nextButton.addEventListener('touchend', showNext); // Soporte para dispositivos táctiles
+
+    prevButton.addEventListener('click', showPrevious);
+    prevButton.addEventListener('touchend', showPrevious); // Soporte para dispositivos táctiles
+
+    // Cerrar el modal si se hace clic fuera del contenido
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalHandler();
+    });
+
+    // También agregar soporte táctil para cerrar el modal al tocar fuera del contenido
+    modal.addEventListener('touchend', (e) => {
+        if (e.target === modal) closeModalHandler();
+    });
+});
+
     function toggleMenu() {
         document.querySelector('.nav-links').classList.toggle('show');
     }
