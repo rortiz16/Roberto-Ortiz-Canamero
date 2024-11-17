@@ -422,7 +422,7 @@ nav .hamburger div {
             background-color: #276f65; /* Efecto hover con un tono más oscuro */
             transform: scale(1.05);
         }
-/*MODAL*/
+/* Estilo para el Modal */
 .modal {
     display: none; 
     position: fixed;
@@ -430,12 +430,15 @@ nav .hamburger div {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);  /* Fondo oscuro semitransparente */
+    z-index: 1000;  /* Asegura que el modal esté encima de todo */
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    overflow: hidden;
+    pointer-events: none;  /* Evita la interacción con el contenido detrás del modal */
 }
 
+/* Estilo para el contenido del modal */
 .modal-content {
     background: white;
     border-radius: 10px;
@@ -443,15 +446,20 @@ nav .hamburger div {
     text-align: center;
     position: relative;
     max-width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;  /* Asegura que el contenido dentro del modal se desplace si es demasiado grande */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    pointer-events: all;  /* Habilita la interacción solo dentro del modal */
 }
 
+/* Estilo para la imagen del modal */
 .modal img {
     max-width: 100%;
     max-height: 70vh;
     margin-bottom: 10px;
 }
 
+/* Estilo para el botón de cerrar */
 .close {
     position: absolute;
     top: 10px;
@@ -461,6 +469,7 @@ nav .hamburger div {
     color: black;
 }
 
+/* Estilo para los botones de navegación */
 button {
     margin: 5px;
     padding: 10px 20px;
@@ -473,6 +482,11 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+/* Estilo para el fondo de la página cuando el modal está abierto */
+body.modal-open {
+    overflow: hidden;  /* Previene el desplazamiento de la página */
 }
 
 
@@ -817,7 +831,7 @@ button:hover {
             <div class="modal-content">
                 <span id="close-modal" class="close">&times;</span>
                 <img id="modal-image" src="" alt="Imagen ampliada">
-                <p id="modal-comment"></p> <!-- Comentario de la imagen -->
+                <p id="modal-comment"></p>
                 <button id="prev-button">&larr; Anterior</button>
                 <button id="next-button">Siguiente &rarr;</button>
             </div>
@@ -888,38 +902,38 @@ button:hover {
     const nextButton = document.getElementById('next-button');
 
     let currentIndex = 0;
-    let images = []; // Guardará las imágenes y comentarios de la tarjeta seleccionada
+    let images = [];
 
     // Función para abrir el modal y mostrar la primera imagen
     function openModal(card) {
-        // Cargar las imágenes y comentarios de la tarjeta
         const cardImages = JSON.parse(card.dataset.images);
-        images = cardImages; // Guardar las imágenes y comentarios en el array
-        currentIndex = 0; // Empezamos con la primera imagen
+        images = cardImages;  // Guardar las imágenes y comentarios en el array
+        currentIndex = 0;  // Empezamos con la primera imagen
 
-        // Mostrar la primera imagen y su comentario
         modalImage.src = images[currentIndex].src;
         modalComment.textContent = images[currentIndex].comment;
 
-        // Mostrar el modal
-        modal.style.display = 'flex';
+        modal.style.display = 'flex';  // Muestra el modal
+        document.body.classList.add('modal-open');  // Bloquea el desplazamiento de la página
+        modal.style.pointerEvents = 'auto';  // Permite la interacción dentro del modal
     }
 
     // Función para cerrar el modal
     function closeModalHandler() {
         modal.style.display = 'none';
+        document.body.classList.remove('modal-open');  // Vuelve a permitir el desplazamiento de la página
     }
 
     // Función para mostrar la siguiente imagen
     function showNext() {
-        currentIndex = (currentIndex + 1) % images.length; // Avanzamos al siguiente
+        currentIndex = (currentIndex + 1) % images.length;
         modalImage.src = images[currentIndex].src;
         modalComment.textContent = images[currentIndex].comment;
     }
 
     // Función para mostrar la imagen anterior
     function showPrevious() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocedemos al anterior
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
         modalImage.src = images[currentIndex].src;
         modalComment.textContent = images[currentIndex].comment;
     }
@@ -952,6 +966,7 @@ button:hover {
         }
     });
 });
+
 
 
     function toggleMenu() {
