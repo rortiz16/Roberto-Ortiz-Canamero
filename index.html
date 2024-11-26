@@ -28,7 +28,7 @@
             left: 0;
             width: 100%; /* 100% del ancho */
             height: 100%; /* 100% de la altura */
-            background-image: url('inicio.jpeg'); /* Tu imagen */
+            background-image: url('inicio3.jpeg'); /* Tu imagen */
             background-size: cover; /* Escala la imagen para cubrir el área */
             background-position: center; /* Centra la imagen */
             background-repeat: no-repeat; /* Sin repetición */
@@ -515,28 +515,28 @@ nav .hamburger div {
             }
 
             nav ul {
-        display: none; /* Ocultar el menú por defecto */
-        flex-direction: column; /* Disposición vertical en pantallas pequeñas */
-        width: 100%;
-        background-color: #38424d; /* Fondo del menú */
-        position: absolute;
-        top: 60px; /* Espaciado hacia abajo */
-        left: 0;
-        padding: 10px 0;
-    }
+                display: none; /* Ocultar el menú por defecto */
+                flex-direction: column; /* Disposición vertical en pantallas pequeñas */
+                width: 100%;
+                background-color: #38424d; /* Fondo del menú */
+                position: absolute;
+                top: 60px; /* Espaciado hacia abajo */
+                left: 0;
+                padding: 10px 0;
+            }
 
-    nav ul li a {
-        font-size: 1.2rem; /* Aumentar tamaño de fuente */
-        padding: 15px;
-    }
+            nav ul li a {
+                font-size: 1.2rem; /* Aumentar tamaño de fuente */
+                padding: 15px;
+            }
 
-    nav ul.show {
-        display: flex; /* Mostrar el menú cuando se haga clic en el hamburguesa */
-    }
+            nav ul.show {
+                display: flex; /* Mostrar el menú cuando se haga clic en el hamburguesa */
+            }
 
-    nav .hamburger {
-        display: flex; /* Mostrar el icono hamburguesa */
-    }
+            nav .hamburger {
+                display: flex; /* Mostrar el icono hamburguesa */
+            }
             .sobremi-grid {
                 grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
                 grid-template-rows: auto;
@@ -664,7 +664,7 @@ nav .hamburger div {
                 <p>Universidad de Castilla-La Mancha (UCLM) - 2021-2025</p>
                 <ul>
                     <li>Especialidad en <strong>Tecnologías de la Información</strong></li>
-                    <li><strong>Proyectos relevantes: </strong>Desarrollo de un juego basado en <strong>pokemon</strong>, sistema de auto creación de playlist <strong>BeatMixer</strong></li>
+                    
                 </ul>
                 <div class="logo-container">
                     <img src="LogoUCLM.jpg" alt="Logo UCLM" class="uclm-logo">
@@ -672,22 +672,21 @@ nav .hamburger div {
             </div>
     
             <div class="formacion-contenido">
-                <h3>Certificación en Análisis de Datos</h3>
-                <p>Google Data Analytics - 2023</p>
+                <h3>Bachillerato</h3>
+                <p>I.E.S. Ribera del Bullaque</p>
                 <ul>
-                    <li>Habilidades aprendidas: Python, R, SQL, Power BI</li>
-                    <li>Proyecto: Análisis de datos de tráfico para optimización de rutas</li>
+                    <li>Especialidad en Ciencias Tecnológicas</li>
                 </ul>
             </div>
     
             <div class="formacion-contenido">
-                <h3>Curso de IoT </h3>
-                <p>Santander Open Academy 2024</p>
-                <ul>
-                    <li>Introducción a Iot</li>
-                    <li>Seguridad</li>
-                    <li>Casos de usos</li>
-                </ul>
+                <h3>Cursos Complementarios</h3>
+                <p>Internet de las cosas </p>
+                <li>Santander Open Academy 2024</li>
+
+                <p>Google: Inteligencia artificail y Productividad </p>
+                <li>Santander Open Academy 2024</li>
+
                 <div class="logo-container">
                     <img src="Santander.png" alt="Logo santander" class="uclm-logo">
                 </div>
@@ -815,7 +814,7 @@ nav .hamburger div {
         {"src": "CapIpo/c3.png", "comment": "Pestaña pacientes. Desde esta pestaña se pueden gestionar todos los pacientes que hay en la clínica y visionar sus próximas citas."},
         {"src": "CapIpo/c4.png", "comment": "Pestaña historial. Desde esta pestaña se puede viosionar una tabla con los pacientes y otra con los resultados de cada cita, además, existe un visor de imagen para cargar radiografías o imagenes importantes para el diagnóstico."},
         {"src": "CapIpo/c5.png", "comment": "Visot y editor de imagenes. Útil para que el fisioterapeuta marque cosas importante sobre la imagen."},
-        {"src": "CapIpo/c6.png", "comment": "Pestaña de gestión ce citas."},
+        {"src": "CapIpo/c6.png", "comment": "Pestaña de gestión de citas."},
         {"src": "CapIpo/c7.png", "comment": "Pestaña de gestión de personal."},
         {"src": "CapIpo/c8.png", "comment": "Cuadro desplegable con la información del administrador."},
         {"src": "CapIpo/c9.png", "comment": "Cuadro desplegable con ayuda para el uso de la aplicación."}
@@ -823,6 +822,28 @@ nav .hamburger div {
     ]'>
         <img src="CapIpo/icono.jpeg" alt="Clinica Fisioterapia">
         <h3>Clinica Fisioterapia</h3>
+    </div>
+
+    <div class="card" data-images='[
+        {"src": "capp_bbdd/c1.png", "comment": "Ventana de inicio."},
+        {"src": "capp_bbdd/c2.png", "comment": "Gestor de paises. En esta ventana podemos añadir nuevos países y averiguar cual son los paises con más conciertos."},
+        {"src": "capp_bbdd/c3.png", "comment": "Ventana de tiempos. Desde esta ventana se pueden introducir fechas de inicio y de fin. Esta aparecerá en operaciones que requieran de esta información como saber los paises que más conciertos tienen entre otras."},
+        {"src": "capp_bbdd/c4.png", "comment": "Resultado de la consulta de países con más conciertos."},
+        {"src": "capp_bbdd/c5.png", "comment": "Ventana artistas. Desde esta ventana se pueden gestionar los artistas de cada concierto, además de realizar ciertas consultas como, sus canciones más interpretadas, albums más interpretados de un artista, artistas que cantan un album completo en un concierto u ordenar los artistas en función del número de conciertos."},
+        {"src": "capp_bbdd/c6.png", "comment": "Detalles de un concierto."},
+        {"src": "capp_bbdd/c7.png", "comment": "Canciones de un artista ordenadas según la cantidad de veces que se ha cantado a lo largo de todos sus conciertos."},
+        {"src": "capp_bbdd/c8.png", "comment": "Albumes de un artista más interpretados en conciertos."},
+        {"src": "capp_bbdd/c9.png", "comment": "Artistas que interpretan un album completo en algún concierto."},
+        {"src": "capp_bbdd/c10.png", "comment": "Artistas ordenados en función del número de conciertos en un intervalo de tiempo."},
+        {"src": "capp_bbdd/c11.png", "comment": "Ventana de gestión de Albumes."},
+        {"src": "capp_bbdd/c12.png", "comment": "Ventana de gestión de Canciones. Permite, además, consultar el listado de canciones de forma ordenada en función de las veces que se ha interpretado."},
+        {"src": "capp_bbdd/c13.png", "comment": "Canciones ordenadas en función del número de interpretaciones."},
+        {"src": "capp_bbdd/c14.png", "comment": "Ventana de gestión de sitios. Además de la propia gestión, ofrece la información de que conciertos se realizarán en que sitios."},
+        {"src": "capp_bbdd/c16.png", "comment": "Ventana de gestión de conciertos, desde aquí es posible elegir los detalles de cada concierto, como pueden ser las canciones cantadas en cada uno y el orden de estas."}
+
+    ]'>
+        <img src="capp_bbdd/micro.webp" alt="Clinica Fisioterapia">
+        <h3>Gestor de conciertos</h3>
     </div>
          
         </div>
