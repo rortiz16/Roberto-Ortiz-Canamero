@@ -44,7 +44,8 @@ nav {
     width: 100%;
     z-index: 10;
     display: flex;
-    justify-content: space-between; /* Separar logo y menú */
+    justify-content: center; 
+    
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
@@ -507,13 +508,25 @@ nav .hamburger div {
                 left: 0;
                 width: 100%; /* 100% del ancho */
                 height: 100%; /* 100% de la altura */
-                background-image: url('inicio.jpeg'); /* Tu imagen */
+                background-image: url('inicio3.jpeg'); /* Tu imagen */
                 background-size: cover; /* Escala la imagen para cubrir el área */
                 background-position: 70% center; /* Centra la imagen */
                 background-repeat: no-repeat; /* Sin repetición */
                 z-index: -1; /* Manda el fondo detrás del contenido */  
             }
-
+            nav {
+                background-color: #38424d;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 10;
+                display: flex;
+                justify-content: center; 
+                justify-content: space-between; /* Separar logo y menú */
+                align-items: center;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 10px 20px;
+            }
             nav ul {
                 display: none; /* Ocultar el menú por defecto */
                 flex-direction: column; /* Disposición vertical en pantallas pequeñas */
@@ -866,7 +879,7 @@ nav .hamburger div {
 
     <section id="contacto" class="contacto-seccion">
         <div class="contacto-contenido">
-            <img src="inicio.jpeg" alt="Foto de Roberto" class="contacto-foto">
+            <img src="inicio3.jpeg" alt="Foto de Roberto" class="contacto-foto">
             <h2>Roberto Ortiz Cañamero</h2>
             <div class="contacto-info">
                 <p><i class="fas fa-phone"></i> +34 649 40 65 74</p>
