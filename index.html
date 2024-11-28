@@ -139,6 +139,23 @@ nav .hamburger div {
             font-weight: 300;
         }
 
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #2f8f83; /* Color del fondo */
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .download-btn:hover {
+            background-color: #276f65; /* Cambio de color al pasar el ratón */
+            transform: scale(1.05);
+        }
+
         /* Fondo borroso en otras secciones */
         section:not(#inicio) {
             backdrop-filter: blur(10px); /* Desenfoca el fondo */
@@ -629,6 +646,9 @@ nav .hamburger div {
     <section id="inicio">
         <h2>Roberto Ortiz Cañamero</h2>
         <p>Estudiante de Ingeniería Informática - UCLM</p>
+        <a href="CV_RobertoOrtiz.pdf" download="CV_RobertoOrtiz.pdf" class="download-btn">
+            Descargar CV
+        </a>
     </section>
 
     <section id="sobremi">
